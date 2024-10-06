@@ -97,8 +97,10 @@ label{
 }
 #login1div1{
     margin-left: 5%;
-    text-decoration:none;
-    color:black;
+    a{
+        text-decoration:none;
+        color:black;
+    }
 }
 #login1div{
     /* border: 2px solid; */
