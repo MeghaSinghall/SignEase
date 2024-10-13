@@ -6,6 +6,7 @@ var1.addEventListener("keyup",e=>{
     var1.style.height=`${height1}px`;
     var2.style.height=`${height1+20}px`;
 });
+
 document.getElementById("chatbtn").onclick=function(){
     let input1=document.getElementById("chattext").value;
     console.log(input1);
