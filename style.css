@@ -177,7 +177,7 @@
         /* background-color: aqua; */
         border:none;
         outline:none;
-        margin:10px 0px 8px 30px;
+        margin:10px 0px 8px 5px;
         resize:none;
         max-height:300px;
     }
@@ -194,6 +194,9 @@
         cursor: pointer;
         align-self:flex-end;
         margin-bottom: 5px; 
+    }
+    #chatrfs{
+        margin-left: 10px;
     }
 } 
 
