@@ -1,1 +1,2 @@
-This is SignEase Website
+Hey Signers
+This is SignEase
