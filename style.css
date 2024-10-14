@@ -167,7 +167,7 @@
     box-shadow: 2px 2px 2px 2px rgba(41,90,178,0.3);
     display:flex;
     align-items: center;
-    max-height:320px;
+    max-height:220px;
 
 
     textarea{
@@ -179,7 +179,7 @@
         outline:none;
         margin:10px 0px 8px 5px;
         resize:none;
-        max-height:300px;
+        max-height:200px;
     }
     /* textarea::-webkit-scrollbar{
         width:0px;
