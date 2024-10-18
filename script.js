@@ -39,8 +39,8 @@ var1.addEventListener("keyup",e=>{
 
 document.getElementById("chatrfs").onclick=function(){
     input1.value="";
-    var1.style.height=`${25}px`;
-    var2.style.height=`${45}px`;
+    var1.style.height=`${28}px`;
+    var2.style.height=`${48}px`;
     if(d1==1)
         {
             vdobox.style.display='none';

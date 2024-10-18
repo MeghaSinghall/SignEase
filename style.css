@@ -179,17 +179,22 @@
     display:flex;
     align-items: center;
     max-height:400px;
-
+    height:48px;
+    padding: 0px;
+    /* background-color:aquamarine; */
 
 
     textarea{
         width:89%;
-        height:25px;
-        font-size:1.3em;
+        padding-top:3px;
+        padding-bottom: 0;
+        height:28px;
+        font-size:15px;
         /* background-color: aqua; */
         border:none;
         outline:none;
-        margin:12px 0px 8px 0px;
+        opacity: 0.8;
+        /* margin:5px 0px 0px 0px; */
         resize:none;
         max-height:380px;
     }
@@ -199,13 +204,13 @@
     button{
         margin: 0;
         padding:0;
-        height:35px;
-        font-size:1.5em;
+        height:30px;
+        font-size:1.4em;
         background-color:white;
         border:none;
         cursor: pointer;
         align-self:flex-end;
-        margin-bottom: 6px; 
+        margin-bottom: 10px; 
     }
     #chatbtn{
         margin-right: 10px;
@@ -213,6 +218,7 @@
     #chatrfs{
         margin-left: 10px;
     }
+    
 }
 
 #bodyvdo{
