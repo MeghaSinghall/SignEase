@@ -14,17 +14,23 @@ var1.addEventListener("keyup",e=>{
     var2.style.height=`${height1+20}px`;
 });
 
-var1.addEventListener("keyup",e=>{
-    e.preventDefault();
-    if(e.keyCode===16){
-        var1.addEventListener("keyup",e=>{
-            e.preventDefault();
-            if(e.keyCode===13){
-                btnclick();
-            }
-        })
+var1.addEventListener("keydown", function(event){
+    if(event.key =="Enter"){
+        btnclick()
     }
 })
+
+// var1.addEventListener("keyup",e=>{
+//     e.preventDefault();
+//     if(e.keyCode===16){
+//         var1.addEventListener("keyup",e=>{
+//             e.preventDefault();
+//             if(e.keyCode===13){
+//                 btnclick();
+//             }
+//         })
+//     }
+// })
 
 var d1=0;
 function btnclick(){
