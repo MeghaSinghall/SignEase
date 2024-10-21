@@ -47,8 +47,11 @@
             <textarea id="chattext" type="text"  placeholder="Type Something..." required></textarea>   
             <button id="chatbtn" onclick="btnclick()">⬆️</button>
         </div>
-        <div id="bodyvdo">
-            <h>Video</h>
+        <div id="statusMessage"></div>
+        <div class="bodyvdo" id="bodyvdo">
+            <video id="videoPlayer" width="auto" controls autoplay preload="auto">
+                <source id="videoSource" src="" type="video/mp4">
+            </video>
         </div>
     </section>
 
