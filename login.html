@@ -11,7 +11,7 @@
         <div id="login1div1">
             <a href="index.html"><h1>SignEase</h1></a>
         </div>
-        <form id="login1div">
+        <!-- <form id="login1div">
             <h1 >Welcome</h1>
             <p>Please enter your details</p>
            <label>
@@ -22,11 +22,71 @@
             <br><br>
             <button > Sign In</button>
            </label>
-        </form>
+        </form> -->
+        <!-- <button id="logoutbtn">Log Out</button><br> -->
+        <div class="login1div2">
+            <form id="signupform">
+                <h1 >Welcome</h1>
+                <p>Please enter your details</p>
+                <label for="name">Name</label><br>
+                <input type="text" id="name" name="name" required><br>
+                <label for="username">Username</label><br>
+                <input type="text" id="username" name="username" required><br>
+                <label for="email">Email</label><br>
+                <input type="email" id="email" name="email" required><br>
+                <label for="password">Password</label><br>
+                <input type="password" id="password" name="password" required><br>
+    
+                <button id="signupbtn">Generate OTP</button>
+            </form>
+            <br>
+            <form id="OTPform" style="display:none">
+                <label for="OTP">Enter OTP</label><br>
+                <input type="number" id="OTP" name="OTP"><br>
+                <div id="valResbtns">
+                    <button id="validateOTPbtn">Validate OTP</button>
+                    <button id="resendOTPbtn">Resend OTP</button>
+                </div>
+                <button id="submitsignupform">Submit</button>
+            </form>            
+            <br/><br/>
+        </div>
+        <div class="login1div3">
+            <form id="loginform" style="display:none">
+                <label for="id">Username/Email</label><br>
+                <input type="text" id="id" name="id" required><br>
+                <label for="logpassword">Password</label><br>
+                <input type="password" id="logpassword" name="password" required><br>
+                <button id="loginbtn">Log In</button>
+                <button id="fpbtn">Forgot Password</button><br>
+            </form>
+            
+            <form id="forgotpasswordform" style="display:none">
+                <label for="forgotpassemail">Enter Email</label><br>
+                <input type="email" id="forgotpassemail" name="email">
+                <button id="fpesbtn">Submit</button>
+            </form>
+            <br/> <br/>
+            <!-- <form id="OTPform" style="display:none">
+                <label for="OTP">Enter OTP</label><br>
+                <input type="number" id="OTP" name="OTP"><br>
+                <div id="valResbtns">
+                    <button id="validateOTPbtn">Validate OTP</button>
+                    <button id="resendOTPbtn">Resend OTP</button>
+                </div>
+            </form> -->
+            <br/> <br/>
+            <form id="newpasswordform" style="display:none">
+                <label for="newpassword">Enter New Password</label><br>
+                <input type="password" id="newpassword" name="password">
+                <button id="npsbtn">Submit</button>
+            </form>
+        </div>
     </section>
     <section id="login2">
         <img src="image1.png" alt="image" id="login2image1"/>
     </section>
-    
+
+    <script src="script.js"></script>    
 </body>
 </html>

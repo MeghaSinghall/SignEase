@@ -1,4 +1,5 @@
 const statusMessage = document.getElementById('statusMessage');
+const initialMessage = document.getElementById('initialMessage');
 const tbox = document.getElementById('chattext');
 const videoPlayer = document.getElementById('videoPlayer');
 const videoSource = document.getElementById('videoSource');
@@ -14,120 +15,273 @@ var1.addEventListener("keyup",e=>{
     var2.style.height=`${height1+20}px`;
 });
 
-// var1.addEventListener("keydown", function(event){
-//     if(event.key =="Enter"){
-//         event.preventDefault();
-//         btnclick();
-//     }
-// });
-
-var1.addEventListener("keyup",e=>{
-    e.preventDefault();
-    if(e.keyCode===16){
-        var1.addEventListener("keyup",e=>{
-            e.preventDefault();
-            if(e.keyCode===13){
-                btnclick();
-            }
-        })
+var1.addEventListener("keydown",(event)=>{
+    if(event.key == "Enter"){
+        event.preventDefault();
+        btnclick();
     }
 })
 
-var d1=0;
+
 function btnclick(){
     console.log(tbox.value);
-    // if(d1==1)
-    // {
-    //     video.style.display='none';
-    //     d1=0;
-    // }
-    if(d1==0) {
-        video.style.visibility='visible';
-        d1=1;
-    }
+    if(tbox.value){
+        video.style.display = 'block';
+        initialMessage.style.display = 'none';
+        console.log("API call initiated...");
+        if(videoPlayer.style.display == 'block'){
+            videoPlayer.style.display = 'none';
+        }
+        statusMessage.innerHTML = "Status Message: Processing request...";
+        statusMessage.style.color = "rgb(23, 158, 237)";
+        statusMessage.style.display = 'block';
 
-    console.log("API call initiated...");
+        const apiUrl = `https://signeaseapiagain-gudcfqe3cbbnhkea.centralindia-01.azurewebsites.net/text/${encodeURIComponent(tbox.value)}`;
 
-    const apiUrl = `https://34.122.209.207/text/${encodeURIComponent(tbox.value)}`;
+        fetch(apiUrl)
+            .then(response => {
+                if (response.ok) {
+                    videoSource.src = apiUrl;
+                    videoPlayer.load();
+                    videoPlayer.style.display = 'block';
+                    statusMessage.innerHTML = 'Status Message: Video is loading....';
+                    statusMessage.style.color = "rgb(70, 207, 70)";
+                    statusMessage.style.display = 'block';
+                }else{
+                    statusMessage.innerHTML = "Status Message: No Video found for the input."
+                    statusMessage.style.color = "rgb(255, 0, 0)";
+                    statusMessage.style.display = 'block';
+                }
+            
+            })
+            .catch(error => {
+                statusMessage.innerHTML = `Error: ${error.message}`;
+                statusMessage.style.color = "rgb(255, 0, 0)";
+                statusMessage.style.display = 'block';
+                console.error('Error:', error);
+            });
 
-    fetch(apiUrl)
-        .then(response => {
-            if (response.ok) {
-                return response.json(); // Assuming the response contains JSON data with the video URL
-            }
-            throw new Error('No video found');
-        })
-        .then(data => {
-            videoSource.src = data.videoUrl; // Assuming the API returns a JSON object with a videoUrl property
-            videoPlayer.load();
-            video.style.visibility = 'visible';
-            statusMessage.innerHTML = 'Status Message: Video is loading....';
-            statusMessage.style.color = "rgb(70, 207, 70)";
-        })
-        .catch(error => {
-            statusMessage.innerHTML = `Error: ${error.message}`;
-            statusMessage.style.color = "rgb(255, 0, 0)";
-            console.error('Error:', error);
-        });
-
-
-    // fetch(apiUrl)
-    //     .then(response => {
-    //         if (response.ok) {
-    //             // If response is OK, set video source and load the video
-    //             videoSource.src = apiUrl;
-    //             videoPlayer.load();
-    //             video.style.visibility = 'visible';
-    //             statusMessage.innerHTML = 'Status Message: Video is loading....'
-    //             statusMessage.style.color = "rgb(70, 207, 70)";
-    //         }
-    //          else {
-    //             statusMessage.innerHTML = "Status Message: No video found for the input.";
-    //             statusMessage.style.color = "rgb(255, 0, 0)";
-    //         }
-    //     })
-    //     .catch(error => {
-    //         statusMessage.innerHTML = `Error: ${error.message}`;
-    //         statusMessage.style.color = "rgb(255, 0, 0)";
-    //         console.error('Error:', error);
-    //     });
+        }    
 
 }
 
 
-
-document.getElementById("chatrfs").onclick = function() {
+document.getElementById('chatrfs').onclick = function() {
     tbox.value = "";
     var1.style.height = `28px`;
     var2.style.height = `48px`;
-    d1 = 0; // Ensure d1 is reset
+    // d1 = 0; // Ensure d1 is reset
     videoSource.src = '';
     videoPlayer.load();
     statusMessage.innerHTML = "Status Message: Processing request...";
     statusMessage.style.color = "rgb(23, 158, 237)";
-    statusMessage.style.visibility = 'hidden';
-    video.style.visibility = 'hidden';
+    statusMessage.style.display = 'none';
+    video.style.display = 'none';
+    videoPlayer.style.display = 'none';
 };
 
 
-// document.getElementById("chatrfs").onclick=function(){
-//     tbox.value="";
-//     var1.style.height=`${28}px`;
-//     var2.style.height=`${48}px`;
-//     if(d1==1)
-//         {
-//             video.style.visibility='visible';
-//             d1=0;
-//         }
-//     // else {
-//     //     video.style.display='none';
-//     //     d1=1;
-//     // }
-//     videoSource.src = '';
-//     // videoPlayer.load();
-//     // statusMessage.innerHTML = "Status Message: Processing request...";
-//     // statusMessage.style.color = "rgb(23, 158, 237)";
-//     statusMessage.style.visibility = 'hidden';
-//     video.style.visibility = 'hidden';
-    
-// }
+// login js
+
+
+const signupform = document.getElementById('signupform');
+const OTPform = document.getElementById('OTPform');
+const loginform = document.getElementById('loginform');
+const forgotpasswordform = document.getElementById('forgotpasswordform');
+const newpasswordform = document.getElementById('newpasswordform');
+
+const logoutbtn = document.getElementById('logoutbtn');
+const signupbtn = document.getElementById('signupbtn');
+const validateOTPbtn = document.getElementById('validateOTPbtn');
+const resendOTPbtn = document.getElementById('resendOTPbtn');
+const loginbtn = document.getElementById('loginbtn');
+const fpbtn = document.getElementById('fpbtn');
+const fpesbtn = document.getElementById('fpesbtn');
+const npsbtn = document.getElementById('npsbtn');
+
+const baseurl = 'https://signeaseloginapi-gvhganfcfnb5aqg6.centralindia-01.azurewebsites.net';
+        // const baseurl = 'http://127.0.0.1:8000'
+
+logoutbtn.onclick=function(){
+    data = {
+        'cuid': (localStorage.getItem('cuid') == null)?'':localStorage.getItem('cuid')
+    }
+    fetch(`${baseurl}/logOut/`,{
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+    }).then(response =>{
+        if(!response.ok){
+            console.log('Something Fucked up!');
+        }
+        return response.json()
+    }).then(message=>{
+        localStorage.removeItem('cuid');
+        console.log(message);
+    }).catch(error=>{
+        console.error(error);
+    })
+
+}
+
+signupbtn.onclick=function(){
+    OTPform.style.display='block';
+    const formdata = new FormData(signupform)
+    data = {}
+    isblank = false;
+    console.log(formdata.entries())
+    for(let [key, value] of formdata.entries()) {
+        console.log(key, value)
+        if (formdata.get(key)){
+            data[key] = formdata.get(key)
+        }else{
+            console.log(`${key} field is blank!`)
+            isblank = true;
+        }
+    }
+    if(!isblank){
+        fetch(`${baseurl}/signup/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response=>{
+            if(!response.ok){
+                console.log('something fucked up!')
+            }
+            return response.json()
+        }).then(message =>{
+            console.log(message)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}
+
+loginbtn.onclick=function(){
+    const formdata = new FormData(loginform);
+    isblank = false;
+    if(!formdata.get('id') || !formdata.get('password')){
+        console.log('Fields must not be blank!');
+        isblank = true;
+    }
+    data = {
+        'id': formdata.get('id'),
+        'password': formdata.get('password'),
+        'cuid': (localStorage.getItem('cuid') == null)?'':localStorage.getItem('cuid')
+    }
+
+    if(!isblank){
+        fetch(`${baseurl}/login/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response=>{
+            if(!response.ok){
+                console.log('something fucked up!')
+            }
+            return response.json()
+        }).then(message =>{
+            localStorage.setItem('cuid', message.uid)
+            console.log(message)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}
+
+validateOTPbtn.onclick=function(){
+    const formdata = new FormData(OTPform);
+    if(formdata.get('OTP')){
+        data = {'OTP': parseInt(formdata.get('OTP'))}
+        fetch(`${baseurl}/validateOTP/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response=>{
+            if(!response.ok){
+                console.log('something fucked up!')
+            }
+            return response.json()
+        }).then(message =>{
+            if(message.valid && message.otpvalidationfor == 'forgotpassword'){
+                console.log('come here')
+                newpasswordform.style.display = 'block';
+            }
+            console.log(message,message.valid, message.otpvalidationfor)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}
+
+resendOTPbtn.onclick=function(){
+    fetch(`${baseurl}/resendOTP/`
+    ).then(response=>{
+        if(!response.ok){
+            console.log('something fucked up!')
+        }
+        return response.json()
+    }).then(message =>{
+        console.log(message)
+    }).catch(error=>{
+        console.log(error)
+    })
+}
+
+fpbtn.onclick=function(){
+    forgotpasswordform.style.display = (forgotpasswordform.style.display == 'none') ? 'block':'none';
+}
+
+fpesbtn.onclick=function(){
+    const formdata = new FormData(forgotpasswordform);
+    if(formdata.get('email')){
+        data = {'email': formdata.get('email')}
+        fetch(`${baseurl}/forgotPassword/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response=>{
+            if(!response.ok){
+                console.log('something fucked up!')
+            }
+            return response.json()
+        }).then(message =>{
+            console.log(message)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}
+
+npsbtn.onclick=function(){
+    const formdata = new FormData(newpasswordform);
+    if(formdata.get('password')){
+        data = {'password': formdata.get('password')}
+        fetch(`${baseurl}/changePassword/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        }).then(response=>{
+            if(!response.ok){
+                console.log('something fucked up!')
+            }
+            return response.json()
+        }).then(message =>{
+            console.log(message)
+        }).catch(error=>{
+            console.log(error)
+        })
+    }
+}
