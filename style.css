@@ -89,14 +89,16 @@
         padding-left: 7px;
         outline-color:rgba(0,0,0,0.6) ;
     }
-    button{
+    .divbtn{
         color: white;
         background-color:rgb(41,90,178);
         /* background-color:rgb(117,230,164); */
         border: none;
         border-radius: 5px;
         width: 100%;
-        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
         font-size: 1em;
         height:30px;
         margin-top: 10px;
@@ -142,12 +144,9 @@
     p{
         margin-top: 1px;
     }
-    /* #OTPform, #submitsignupform{
-        display: none;
-    }     */
 }
 #valResbtns{
-    button{
+    .divbtn{
         width:48%;
     }
     display: flex;
